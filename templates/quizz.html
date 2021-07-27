@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Quizz |
+{% endblock title %}
+
+
+
+{% block body %}
+    <section class="card">
+        <h1 class="title">Quizz</h1>
+        <form method="post" action="{% url 'quizz_resultados' %}">
+            {% csrf_token %}
+
+            <p>1. Qual o sabor vendido?</p>
+
+            <input type="radio" id="baunilha" name="q1" value="baunilha">
+            <label for="baunilha">Baunilha</label><br>
+            <input type="radio" id="chocolate" name="q1" value="chocolate">
+            <label for="chocolate">Chocolate</label><br>
+            <input type="radio" id="morango" name="q1" value="morango">
+            <label for="morango">Morango</label><br>
+            <input type="radio" id="menta" name="q1" value="menta">
+            <label for="menta">Menta</label><br>
+
+            <br>
+
+            <p>2. Qual a sua combinação mais vendida com Baunilha? </p>
+
+            <input type="radio" id="bau-cho" name="q2" value="bau-cho">
+            <label for="bau-cho">Baunilha/Chocolate</label><br>
+            <input type="radio" id="bau-mor" name="q2" value="bau-mor">
+            <label for="bau-mor">Baunilha/Morango</label><br>
+            <input type="radio" id="bau-men" name="q2" value="bau-men">
+            <label for="bau-men">Baunilha/Menta</label><br>
+            <input type="radio" id="bau-car" name="q2" value="bau-car">
+            <label for="bau-car">Baunilha/Caramelo</label><br>
+
+            <br>
+
+            <p>3. Topping mais vendido para gelados?</p>
+
+            <input type="radio" id="smarties" name="q3" value="smarties">
+            <label for="smarties">Smarties</label><br>
+            <input type="radio" id="mm" name="q3" value="mm">
+            <label for="mm">M&M</label><br>
+            <input type="radio" id="oreos" name="q3" value="oreos">
+            <label for="oreos">Oreos</label><br>
+
+            <br>   
+
+            <p>4. Números de bolas mais vendido?</p>
+
+            <input type="range" min="10" max="25"name="q4" value="0"oninput="taxaN.value = parseInt(q4.value)">
+            <output name="taxaN" for="q4">10</output><br>
+            <br>
+
+
+            <p>5. Quanto custa uma bola de gelado no nosso site?</p>
+
+            <input type="radio" id="um" name="q5" value="um">
+            <label for="um">1,00€</label><br>
+            <input type="radio" id="dois" name="q5" value="dois">
+            <label for="dois">1,50</label><br>
+            <input type="radio" id="tres" name="q5" value="tres">
+            <label for="tres">1,80€</label><br>
+
+            <br>
+
+            <p>6. Sobremesa mais vendida na nossa loja?</p>
+
+            <input type="radio" id="crepe" name="q6" value="crepe">
+            <label for="crepe">Crepe</label><br>
+            <input type="radio" id="gelado" name="q6" value="gelado">
+            <label for="gelado">Gelado</label><br>
+            <input type="radio" id="petit-gateau" name="q6" value="petit-gateau">
+            <label for="petit-gateau">Petit Gateau</label><br>
+
+            <br>
+
+            <p>7. Idade que come mais gelados?</p>
+
+            <input type="radio" id="zerodez" name="q7" value="zerodez">
+            <label for="zerodez">0-10</label><br>
+            <input type="radio" id="onzevinte" name="q7" value="onzevinte">
+            <label for="onzevinte">11-20</label><br>
+            <input type="radio" id="maisvinte" name="q7" value="maisvinte">
+            <label for="maisvinte">21+</label><br>
+
+            <br>      
+            
+            <p>8. Topping mais requisitado para crepes?</p>
+
+            <input type="radio" id="choco" name="q8" value="choco">
+            <label for="choco">Chocolate</label><br>
+            <input type="radio" id="caramelo" name="q8" value="caramelo">
+            <label for="caramelo">Caramelo</label><br>
+            <input type="radio" id="gela" name="q8" value="gela">
+            <label for="gela">Gelado</label><br>
+
+            <br>  
+
+            <p>9. Regularidade com que os nossos clientes comem gelados?</p>
+
+            <input type="radio" id="semanal" name="q9" value="semanal">
+            <label for="semanal">Semanalmente</label><br>
+            <input type="radio" id="mensal" name="q9" value="mensal">
+            <label for="mensal">Mensalmente</label><br>
+            <input type="radio" id="anual" name="q9" value="anual">
+            <label for="anual">Anualmente</label><br>
+
+            <br>  
+
+            <p>10. Gelado menos comprado na nossa loja?</p>
+
+            <input type="radio" id="choco1" name="q10" value="choco1">
+            <label for="choco1">Chocolate</label><br>
+            <input type="radio" id="caramelo1" name="q10" value="caramelo1">
+            <label for="caramelo1">Caramelo</label><br>
+            <input type="radio" id="morango1" name="q10" value="morango1">
+            <label for="morango1">Morango</label><br>
+
+            <br>
+
+            <input type="submit" class="visit-button" value="Submeter">
+        </form>
+    </section>
+{% endblock %}
+
+{% block aside %}
+    <section class="card">
+        <h1 class="title">Wordcloud</h1>
+        <figure><img src="{% static "workcloud.png" %}" alt="work-cloud"></figure>
+        
+    </section>
+
+    <section class="card">
+        <h1 class="title">Curiosidades</h1>
+        <p>
+            Em média, uma vaca comum produz leite suficiente ao longo de sua vida para produzir 28 mil litros de gelado.
+        </p>
+        <figure>
+            <img src="{% static "gelado.jpg" %}" alt="gelado">
+            <figcaption><a href="https://pt.wikipedia.org/wiki/Sorvete">Gelado</a></figcaption>
+        </figure>
+    </section>
+{% endblock %}

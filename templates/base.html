@@ -1,0 +1,90 @@
+<!--   Template Inheritance Concept
+ the nav bar in home page we want it every where
+will be used by every page
+ -->
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="E-commerce gelataria">
+    <meta name="keywords" content="e-commerce, gelado, gelados, verão, fresco, barato, barato e bom, ULHT, Campo Grande">
+    <meta name="copyright" content="© 2021 AutorX & AutorY - WebDev ULHT"/>
+    <meta name="rating" content="general"/>
+      <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title> {% block title %} {% endblock title %} ULHT Gelados</title>
+      {% block head %} {% endblock head %}
+
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">ULHT Gelados</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+        </button>
+
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+       <li class="nav-item active">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+       </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/me">Sobre Nós</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/sobre">Sobre o site</a>
+        </li>
+         <li class="nav-item">
+        <a class="nav-link" href="/quizz">Quizz</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+     <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
+         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Procurar</button>
+
+       </form>
+        <button type="button" class="btn btn-outline-success mx-2 pop" id="popcart" data-trigger="click" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
+            sagittis lacus vel augue laoreet rutrum faucibus." style="color:white;background-color:none;">
+             Carrinho (<span id="cart" style="color:red;"  >0</span>)
+         </button>
+      </div>
+
+    </nav>
+
+    <!-- Adiciona os Alertas -->
+
+    {% if messages %}
+    {% for message in messages %}
+     <div class="alert alert-{{ message.tags }} alert-dismissible fade show  my-0" role="alert">
+         <strong>{{ message }}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+      </div>
+      {% endfor %}
+     {% endif %}
+    {% block body %}  {% endblock body %}
+
+    <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+     {% block js%}
+
+     {% endblock %}
+  </body>
+</html>

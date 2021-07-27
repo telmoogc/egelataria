@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Quizz Resultados |
+{% endblock title %}
+
+{% block body %}
+    <section class="card">
+        <h1 class="title">Quizz</h1>
+        <form method="post" action="{% url 'quizz_resultados' %}">
+            {% csrf_token %}
+
+            <h2>Pontuação: {{ pontuacao }}%</h2>
+
+            <p>1. Qual o sabor mais vendido?</p>
+
+            <input type="radio" id="baunilha" name="q1" value="baunilha" disabled {% if q1 == "baunilha" %}checked{% endif %}>
+            <label for="baunilha">Baunilha</label>{% if q1 == "baunilha" %}<span class="material-icons">close</span>{% endif %}<br>
+            <input type="radio" id="chocolate" name="q1" value="chocolate" disabled {% if q1 == "chocolate" %}checked{% endif %}>
+            <label for="chocolate">Chocolate</label>{% if q1 == "chocolate" %}<span class="material-icons">close</span>{% endif %}<br>
+            <input type="radio" id="morango" name="q1" value="morango" disabled {% if q1 == "morango" %}checked{% endif %}>
+            <label for="morango">Morango</label><span class="material-icons">done</span><br>
+            <input type="radio" id="menta" name="q1" value="menta" disabled {% if q1 == "menta" %}checked{% endif %}>
+            <label for="menta">Menta</label>{% if q1 == "menta" %}<span class="material-icons">close</span>{% endif %}<br>
+
+            <br>
+
+            <p>2. Qual a sua combinação mais vendida com Baunilha? </p>
+
+            <input type="radio" id="bau-cho" name="q2" value="bau-cho" disabled {% if q2 == "bau-cho" %}checked{% endif %}>
+            <label for="bau-cho">Baunilha/Chocolate</label><span class="material-icons">done</span><br>
+            <input type="radio" id="bau-mor" name="q2" value="bau-mor" disabled {% if q2 == "bau-mor" %}checked{% endif %}>
+            <label for="bau-mor">Baunilha/Morango</label>{% if q2 == "bau-mor" %}<span class="material-icons">close</span>{% endif %}<br>
+            <input type="radio" id="bau-men" name="q2" value="bau-men" disabled {% if q2 == "bau-men" %}checked{% endif %}>
+            <label for="bau-men">Baunilha/Menta</label>{% if q2 == "bau-men" %}<span class="material-icons">close</span>{% endif %}<br>
+            <input type="radio" id="bau-car" name="q2" value="bau-car" disabled {% if q2 == "bau-car" %}checked{% endif %}>
+            <label for="bau-car">Baunilha/Caramelo</label>{% if q2 == "bau-car" %}<span class="material-icons">close</span>{% endif %}<br>
+
+            <br>
+
+            <p>3. Topping mais vendido para gelados?</p>
+
+            <input type="radio" id="smarties" name="q3" value="smarties" disabled {% if q3 == "smarties" %}checked{% endif %}>
+            <label for="smarties">Smarties</label>{% if q3 == "smarties" %}<span class="material-icons">close</span>{% endif %}<br>
+            <input type="radio" id="mm" name="q3" value="mm" disabled {% if q3 == "mm" %}checked{% endif %}>
+            <label for="mm">M&M</label>{% if q3 == "mm" %}<span class="material-icons">close</span>{% endif %}<br>
+            <input type="radio" id="oreos" name="q3" value="oreos" disabled {% if q3 == "oreos" %}checked{% endif %}>
+            <label for="oreos">Oreos</label><span class="material-icons">done</span><br>
+
+            <br>   
+
+            <p>4. Números de bolas mais vendido?</p>
+
+            <input type="range" min="10" max="25"name="q4" value="{{q4}}" oninput="taxaN.value = parseInt(q4.value)" disabled>
+            <output name="taxaN" for="q4">{{q4}}</output>{% if q4 == "15" %}<span class="material-icons">done</span>{% else %}<span class="material-icons">close</span>{% endif %}<br>
+            <br>
+
+
+            <p>5. Quanto custa uma bola de gelado no nosso site?</p>
+
+            <input type="radio" id="um" name="q5" value="um" disabled {% if q5 == "um" %}checked{% endif %}>
+            <label for="um">1,00€</label><span class="material-icons">done</span><br>
+            <input type="radio" id="dois" name="q5" value="dois" disabled {% if q5 == "dois" %}checked{% endif %}>
+            <label for="dois">1,50€</label>{% if q5 == "dois" %}<span class="material-icons">close</span>{% endif %}<br>
+            <input type="radio" id="tres" name="q5" value="tres" disabled {% if q5 == "tres" %}checked{% endif %}>
+            <label for="tres">1,80€</label>{% if q5 == "tres" %}<span class="material-icons">close</span>{% endif %}<br>
+
+            <br>
+
+            <p>6. Sobremesa mais vendida na nossa loja?</p>
+
+            <input type="radio" id="crepe" name="q6" value="crepe" disabled {% if q6 == "crepe" %}checked{% endif %}>
+            <label for="crepe">Crepe</label>{% if q6 == "crepe" %}<span class="material-icons">close</span>{% endif %}<br>
+            <input type="radio" id="gelado" name="q6" value="gelado" disabled {% if q6 == "gelado" %}checked{% endif %}>
+            <label for="gelado">Gelado</label><span class="material-icons">done</span><br>
+            <input type="radio" id="petit-gateau" name="q6" value="petit-gateau" disabled {% if q6 == "petit-gateau" %}checked{% endif %}>
+            <label for="petit-gateau">Petit Gateau</label>{% if q6 == "petit-gateau" %}<span class="material-icons">close</span>{% endif %}<br>
+
+            <br>
+
+            <p>7. Idade que come mais gelados?</p>
+
+            <input type="radio" id="zerodez" name="q7" value="zerodez" disabled {% if q7 == "zerodez" %}checked{% endif %}>
+            <label for="zerodez">0-10</label>{% if q7 == "zerodez" %}<span class="material-icons">close</span>{% endif %}<br>
+
+            <input type="radio" id="onzevinte" name="q7" value="onzevinte" disabled {% if q7 == "onzevinte" %}checked{% endif %}>
+            <label for="onzevinte">11-20</label><span class="material-icons">done</span><br>
+
+            <input type="radio" id="vintemais" name="q7" value="vintemais" disabled {% if q7 == "vintemais" %}checked{% endif %}>
+            <label for="vintemais">21+</label>{% if q7 == "vintemais" %}<span class="material-icons">close</span>{% endif %}<br>
+
+            <br> 
+            
+            <p>8. Topping mais requisitado para crepes?</p>
+
+            <input type="radio" id="choco" name="q8" value="choco" disabled {% if q8 == "choco" %}checked{% endif %}>
+            <label for="choco">Chocolate</label><span class="material-icons">done</span><br>
+
+            <input type="radio" id="caramelo" name="q8" value="caramelo" disabled {% if q8 == "caramelo" %}checked{% endif %}>
+            <label for="caramelo">Caramelo</label>{% if q8 == "onzevinte" %}<span class="material-icons">close</span>{% endif %}<br>
+
+            <input type="radio" id="gela" name="q8" value="gela" disabled {% if q8 == "gela" %}checked{% endif %}>
+            <label for="gela">Gelado</label>{% if q8 == "maisvinte" %}<span class="material-icons">close</span>{% endif %}<br>
+
+            <br>  
+
+            <p>9. Regularidade com que os nossos clientes comem gelados?</p>
+
+            <input type="radio" id="semanal" name="q9" value="semanal" disabled {% if q9 == "semanal" %}checked{% endif %}>
+            <label for="semanal">Semanal</label>{% if q9 == "semanal" %}<span class="material-icons">close</span>{% endif %}<br>
+
+            <input type="radio" id="mensal" name="q9" value="mensal" disabled {% if q9 == "mensal" %}checked{% endif %}>
+            <label for="mensal">Mensal</label>{% if q9 == "mensal" %}<span class="material-icons">close</span>{% endif %}<br>
+
+            <input type="radio" id="anual" name="q9" value="anual" disabled {% if q9 == "anual" %}checked{% endif %}>
+            <label for="anual">Anual</label><span class="material-icons">done</span><br>
+
+            <br>  
+
+            <p>10. Gelado menos comprado na nossa loja?</p>
+
+            <input type="radio" id="choco1" name="q10" value="choco1" disabled {% if q10 == "choco1" %}checked{% endif %}>
+            <label for="choco1">Chocolate</label><br><span class="material-icons">done</span><br>
+
+            <input type="radio" id="caramelo1" name="q10" value="caramelo1" disabled {% if q10 == "caramelo1" %}checked{% endif %}>
+            <label for="caramelo1">Caramelo</label><br>{% if q10 == "caramelo1" %}<span class="material-icons">close</span>{% endif %}<br>
+            
+            <input type="radio" id="morango1" name="q10" value="morango1" disabled {% if q10 == "morango1" %}checked{% endif %}>
+            <label for="morango1">Morango</label><br>{% if q10 == "rolling" %}<span class="material-icons">close</span>{% endif %}<br>
+
+            <br>  
+
+            <input type="submit" class="visit-button" value="Submeter">
+        </form>
+    </section>
+{% endblock %}
+
+{% block aside %}
+    <section class="card">
+        <h1 class="title">Wordcloud</h1>
+        <figure><img src="{% static "workcloud.png" %}" alt="work-cloud"></figure>
+
+    </section>
+
+    <section class="card">
+        <h1 class="title">Curiosidades</h1>
+        <p>
+            Em média, uma vaca comum produz leite suficiente ao longo de sua vida para produzir 28 mil litros de gelado.
+        </p>
+        <figure>
+            <img src="{% static "gelado.jpg" %}" alt="gelado">
+            <figcaption><a href="https://pt.wikipedia.org/wiki/Sorvete">Gelado</a></figcaption>
+        </figure>
+    </section>
+{% endblock %}
+

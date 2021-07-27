@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Contact |
+{% endblock title %}
+
+{% block body %}
+
+<div class="container-fluid px-0 py-0 ">
+    <img src= "{% static "photo-1498230870289-7561110a6e69.jpg" %}"class="d-block w-100 " alt="2nd">
+    <h1 class="my-2 text-center">Contacta-nos</h1>
+</div>
+
+
+<div class="container py-2">
+<form method="post"  action="/contact">
+    {% csrf_token%}
+  <div class="form-group">
+    <label for="email">E-mail</label>
+    <input type="email" class="form-control" id="email"  name="email" placeholder="Insere aqui o seu e-mail">
+  </div>
+   <div class="form-group">
+    <label for="Name">Nome</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Insere aqui o seu nome">
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Número de Telemovel</label>
+    <input type="number" class="form-control" id="phone"  name="phone" placeholder="Insere aqui o seu número de telemovel">
+  </div>
+  <div class="form-group">
+    <label for="desc">Fale connosco</label>
+    <textarea class="form-control" id="text" rows="3" name="desc"></textarea>
+  </div>
+
+        <button type="submit" class="btn btn-primary ">Enviar</button>
+</form>
+
+{% endblock body %}
